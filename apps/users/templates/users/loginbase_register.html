@@ -1,0 +1,41 @@
+{% extends 'users/loginbase.html' %}
+
+{% block content %}
+
+    <h1>register</h1>
+    {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="/process_register/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="f_name">First Name:</label>
+            <input type="text" class="form-control" name="f_name">
+        </div>
+        <div class="form-group">
+            <label for="l_name">Last Name:</label>
+            <input type="text" class="form-control" name="l_name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label form="text">Password:</label>
+            <input type="text" class="form-control" name="password">
+        </div>
+        <div class="form-group">
+            <label form="text">Confirm Password:</label>
+            <input type="text" class="form-control" name="confirm_password">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+    <a href="/users/login/">Login Page</a>
+</div>
+{% endblock %}
